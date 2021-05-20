@@ -28,7 +28,7 @@ c2g_tot_fname = output_dir + c2g_pickle_file
 # for extraction of specific months across years. This only processes on field at a time.
 
 start_year = 1981
-end_year = 2010
+end_year = 1982
 start_month = 7
 end_month = 7
 field2process = "tavg"
@@ -182,7 +182,7 @@ for curr_year in range(start_year, end_year + 1):
             np.save(outarray_fname, deviat)
 
     # Done with current input file (1 month). Close it
-    ##        cdatafile.close()
+            cdatafile.close()
 
 
 # For diagnostic purposes output text file        
