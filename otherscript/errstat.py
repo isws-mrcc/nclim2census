@@ -8,15 +8,16 @@ import cenmod
 # unless a field loop is put in. With only 3 fields, this isn't a big deal.
 
 start_year = 1981     
-end_year = 2010
+end_year = 1982
 start_month = 7
 end_month = 7
-field2process = "tavg"
+field2process = "tmin"
 
 # Dir's
 
 output_err_dir = "..\\output\\err\\" # Location of numpy arrays from devcomp.py
-output_stats_dir = "..\\output\\err\\stats\\"
+output_stats_dir = "..\\output\\err\\stats\\" # This is where output stat numpy arrays are put
+                                              # Make sure this directory exists.
 
 # Loop over years
 # Number of statistical elements

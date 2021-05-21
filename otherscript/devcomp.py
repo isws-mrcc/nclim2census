@@ -9,13 +9,13 @@ import cenmod
 ## object files. See AWR Report for more details
 ##
 ## C. Travis Ashby
-## Last updated 04/28/2021
+## 04/28/2021
 
 # Set up directory and file names
 
-map_dir = "..\\map_data\\"
-output_dir = "..\\output\\"
-output_err_dir = "..\\output\\err\\"
+map_dir = "..\\map_data\\" # GIS Union file dir
+output_dir = "..\\output\\" # Estimates need to be in this directory
+output_err_dir = "..\\output\\err\\" # Deviation numpy files will be put here by this code
 c2g_pickle_file = "C2G_Map.pickle"
 logfilenm = output_dir + "errproc.log.txt"
 c2g_tot_fname = output_dir + c2g_pickle_file
@@ -31,7 +31,7 @@ start_year = 1981
 end_year = 1982
 start_month = 7
 end_month = 7
-field2process = "tavg"
+field2process = "tmin"
 
 
 
@@ -182,7 +182,6 @@ for curr_year in range(start_year, end_year + 1):
     # Done with current input file (1 month). Close it
             cdatafile.close()
 
-# Done with all times
 
 # For diagnostic purposes output text file        
 ##finout = open("finout.txt", "w")

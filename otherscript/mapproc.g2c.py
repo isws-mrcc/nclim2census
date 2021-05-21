@@ -6,12 +6,12 @@
 
 import pickle
 
-output_dir = "..\\output\\"
-map_dir = "..\\map_data\\"
-combo_fname = "Combinations_Union.csv" 
-tract_fname = "Tracts.csv"
-map_fname = output_dir + "G2C_Map.pickle"
-unmatched_fname = output_dir + "umatch_all.txt"
+output_dir = "..\\output\\" # Output pickle file will go here
+map_dir = "..\\map_data\\"  # Input GIS Union file needs to be here
+combo_fname = "Combinations_Union.csv"  # Input GIS Union file name
+tract_fname = "Tracts.csv" # Not used currently
+map_fname = output_dir + "G2C_Map.pickle"  # Output pickle filename
+unmatched_fname = output_dir + "umatch_all.txt" # File with unmatched ctracts listed
 
 Combofile = map_dir + combo_fname
 Tractsfile = output_dir + tract_fname

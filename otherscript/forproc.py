@@ -2,31 +2,33 @@ from netCDF4 import Dataset
 import pickle, math
 import numpy as np
 
-# The input NCEI nClimgrid-d netcdf files need to be in the map_dir under subdirectories by year
+# The input NCEI nClimgrid-d netcdf files need to be in the ncdata_dir (see below) under subdirectories by year
 # The output will also be organized this way in the output dir, so setup directories named by the
-# 4 digit year before running
+# 4 digit year before running (i.e. output_dir\1980, output_dir\1981).
+# 
 # As elsewhere this is going to run the range of months start_month -> end_month for each year in the
 # year range. This allows for slicing of the years. If one doesn't want this, then simply
 # run it from Jan - Dec for the middle years and then the specific month range for the first and last
 # years respectively (set start_year and end_year to the year)
 
 
-gen_txt_output = False
-start_month = 1
-end_month = 12
-start_year = 1951
-end_year = 2020
+gen_txt_output = True # This should be true generally since this is the main output
+start_month = 3
+end_month = 3
+start_year = 1980
+end_year = 1980
 
 fields2process = ["tmax", "tmin", "tavg"]
 #fields2process = ["tmax"]
 
 # String constants for directories and whatnot
 
-
-map_dir = "..\\map_data\\"
-output_dir = "..\\output\\"
-g2c_pickle_file = "G2C_Map.pickle"
-logfilenm = output_dir + "forproc.log.txt"
+ncdata_dir = "..\\ncei_data\\"
+map_dir = "..\\map_data\\" # GIS Unionfile needs to be here
+output_dir = "..\\output\\" # All output goes here. Need to have year directories set up within this
+                            # just like with the ncei files in
+g2c_pickle_file = "G2C_Map.pickle" # Pickle file made by mapproc.g2c.py
+logfilenm = output_dir + "forproc.log.txt" # Log file if needed
 g2c_tot_fname = output_dir + g2c_pickle_file
 
 
@@ -44,7 +46,7 @@ indictfile.close()
 
 for curr_year in range(start_year, end_year + 1):
                        
-    indata_dir = "..\\ncei_data\\" + ("%4d\\" % curr_year) 
+    indata_dir = ncdata_dir + ("%4d\\" % curr_year) # Note ncei data needs to be in year dir's
     if curr_year < 1970:
         pre_1970 = True  # Pre-1970, all three temperature fields are in one netcdf file. 1970 onward,
                          # they are in three separate files.
@@ -153,7 +155,7 @@ for curr_year in range(start_year, end_year + 1):
             # Start the time loop
 
             for day in range(0, numtimes):
-# Debug                print("Field: %s, Day: %2d\n" % (field, day + 1))
+                print("Field: %s, Day: %2d\n" % (field, day + 1))
                 outfile.write("%4d    %02d    %02d\n" % (curr_year, curr_month, day + 1))    
                 missing_tracts = set()
                 templistcopy = []
@@ -186,7 +188,7 @@ for curr_year in range(start_year, end_year + 1):
                     else:                      #At least one valid gridpoint temperature contributed
                         gridpoints[0] = tot_area
                         gridpoints[field_index].append(tract_val/tot_area) #Normalize and record
-                        if gen_txt_output:
+                        if gen_txt_output:    #Must set TRUE if one wants actual output file
                             outfile.write("%011d, %12.3f,\n" % (currkey, gridpoints[field_index][day]))
                                 
 

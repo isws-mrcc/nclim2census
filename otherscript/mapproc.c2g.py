@@ -8,16 +8,15 @@ import pickle
 
 
 
-output_dir = "..\\output\\"
-map_dir = "..\\map_data\\"
-combo_fname = "Combinations_Union.csv" 
-#combo_fname = "testcomboshort.txt"
-map_fname = output_dir + "C2G_Map.pickle"
-unmatched_fname = output_dir + "umatch_c2g.txt"
+output_dir = "..\\output\\" # Output from this code goes here
+map_dir = "..\\map_data\\" # GIS Union file needs to be in this directory
+combo_fname = "Combinations_Union.csv" # GIS Union file
+map_fname = output_dir + "C2G_Map.pickle" # Output pickle filename
+unmatched_fname = output_dir + "umatch_c2g.txt" # Listing of unmatched gridpoints
 
 Combofile = map_dir + combo_fname
 
-cdict = {}
+cdict = {}  # Dictionary built by this code with GP (i,j) tuple as key
 
 cfile = open(Combofile, "r"); 
 umatch = open(unmatched_fname, "w")
