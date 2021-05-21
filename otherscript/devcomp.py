@@ -130,8 +130,6 @@ for curr_year in range(start_year, end_year + 1):
             cdatafile = open(cdatafname, "r")
             line = cdatafile.readline()        #Read in file header, discard
             line = cdatafile.readline()     #Read in first date line, discard
-            days_processed += 1
-            print("cendict days_processed: ", days_processed)
 
     # Loop thru input txt file retrieving each day
             monthday = 0
