@@ -9,7 +9,7 @@ import cenmod
 ## object files. See AWR Report for more details
 ##
 ## C. Travis Ashby
-## 04/28/2021
+## Last updated 04/28/2021
 
 # Set up directory and file names
 
