@@ -182,6 +182,7 @@ for curr_year in range(start_year, end_year + 1):
     # Done with current input file (1 month). Close it
             cdatafile.close()
 
+# Done with all times
 
 # For diagnostic purposes output text file        
 ##finout = open("finout.txt", "w")
