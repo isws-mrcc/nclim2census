@@ -14,9 +14,9 @@ import numpy as np
 
 gen_txt_output = True # This should be true generally since this is the main output
 start_month = 3
-end_month = 3
-start_year = 1980
-end_year = 1980
+end_month = 6
+start_year = 1981
+end_year = 1981
 
 fields2process = ["tmax", "tmin", "tavg"]
 #fields2process = ["tmax"]
@@ -40,6 +40,9 @@ logfile = open(logfilenm, "w") #Log file for debugging if needed. Put write or p
 indictfile = open(g2c_tot_fname, "rb")
 mdict = pickle.load(indictfile)
 indictfile.close()
+sortkey = list(mdict.keys()) # Create sorted list of keys to use in output to make
+                             # output textfile more readable
+sortkey.sort()
 
 
 # Start looping through years
@@ -158,9 +161,6 @@ for curr_year in range(start_year, end_year + 1):
                 print("Field: %s, Day: %2d\n" % (field, day + 1))
                 outfile.write("%4d    %02d    %02d\n" % (curr_year, curr_month, day + 1))    
                 missing_tracts = set()
-                templistcopy = []
-                sortkey = list(mdict.keys())
-                sortkey.sort()
                 
                 # Process each census tract
                 for currkey in sortkey:
